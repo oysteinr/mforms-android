@@ -1,0 +1,640 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xforms xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<model>
+
+		<instance id="sample_study_sample_form_v1">
+
+			<sample_study_sample_form_v1 id="216"
+				name="Sample Form_v1">
+
+				<patient_id />
+
+				<title />
+
+				<first_name />
+
+				<last_name />
+
+				<sex />
+
+				<birth_date />
+
+				<weight_kg />
+
+				<height_ft />
+
+				<is_patient_pregnant />
+
+				<arvs />
+
+				<picture />
+
+				<sound />
+
+				<record_video />
+
+				<location />
+
+				<continent />
+
+				<country />
+
+				<district />
+
+				<number_of_children>0</number_of_children>
+
+				<details_of_children>
+
+					<name />
+
+					<age />
+
+					<child_sex />
+
+				</details_of_children>
+
+				<start_time>'today()'</start_time>
+
+				<endtime />
+
+			</sample_study_sample_form_v1>
+
+		</instance>
+
+		<instance id="country">
+
+			<dynamiclist>
+
+				<item id="uganda" parent="africa">
+
+					<label>Uganda</label>
+
+					<value>uganda</value>
+
+				</item>
+
+				<item id="kenya" parent="africa">
+
+					<label>Kenya</label>
+
+					<value>kenya</value>
+
+				</item>
+
+				<item id="tanzania" parent="africa">
+
+					<label>Tanzania</label>
+
+					<value>tanzania</value>
+
+				</item>
+
+				<item id="rwanda" parent="africa">
+
+					<label>Rwanda</label>
+
+					<value>rwanda</value>
+
+				</item>
+
+				<item id="malaysia" parent="asia">
+
+					<label>Malaysia</label>
+
+					<value>malaysia</value>
+
+				</item>
+
+				<item id="india" parent="asia">
+
+					<label>India</label>
+
+					<value>india</value>
+
+				</item>
+
+				<item id="china" parent="asia">
+
+					<label>China</label>
+
+					<value>china</value>
+
+				</item>
+
+				<item id="singapore" parent="asia">
+
+					<label>Singapore</label>
+
+					<value>singapore</value>
+
+				</item>
+
+				<item id="italy" parent="europe">
+
+					<label>Italy</label>
+
+					<value>italy</value>
+
+				</item>
+
+				<item id="england" parent="europe">
+
+					<label>England</label>
+
+					<value>england</value>
+
+				</item>
+
+				<item id="netherlands" parent="europe">
+
+					<label>Netherlands</label>
+
+					<value>netherlands</value>
+
+				</item>
+
+				<item id="norway" parent="europe">
+
+					<label>Norway</label>
+
+					<value>norway</value>
+
+				</item>
+
+				<item id="america" parent="americas">
+
+					<label>America</label>
+
+					<value>america</value>
+
+				</item>
+
+				<item id="brazil" parent="americas">
+
+					<label>Brazil</label>
+
+					<value>brazil</value>
+
+				</item>
+
+				<item id="chile" parent="americas">
+
+					<label>Chile</label>
+
+					<value>chile</value>
+
+				</item>
+
+			</dynamiclist>
+
+		</instance>
+
+		<instance id="district">
+
+			<dynamiclist>
+
+				<item id="kampala" parent="uganda">
+
+					<label>Kampala</label>
+
+					<value>kampala</value>
+
+				</item>
+
+				<item id="masaka" parent="uganda">
+
+					<label>Masaka</label>
+
+					<value>masaka</value>
+
+				</item>
+
+				<item id="mbale" parent="uganda">
+
+					<label>Mbale</label>
+
+					<value>mbale</value>
+
+				</item>
+
+				<item id="mbarara" parent="uganda">
+
+					<label>Mbarara</label>
+
+					<value>mbarara</value>
+
+				</item>
+
+				<item id="nairobi" parent="kenya">
+
+					<label>Nairobi</label>
+
+					<value>nairobi</value>
+
+				</item>
+
+				<item id="kisumu" parent="kenya">
+
+					<label>Kisumu</label>
+
+					<value>kisumu</value>
+
+				</item>
+
+				<item id="eldoret" parent="kenya">
+
+					<label>Eldoret</label>
+
+					<value>eldoret</value>
+
+				</item>
+
+			</dynamiclist>
+
+		</instance>
+
+		<bind id="patient_id" nodeset="/sample_study_sample_form_v1/patient_id"
+			type="xsd:string" />
+
+		<bind id="title" nodeset="/sample_study_sample_form_v1/title"
+			type="xsd:string" />
+
+		<bind id="first_name" nodeset="/sample_study_sample_form_v1/first_name"
+			type="xsd:string" />
+
+		<bind id="last_name" nodeset="/sample_study_sample_form_v1/last_name"
+			required="true()" type="xsd:string" />
+
+		<bind id="sex" nodeset="/sample_study_sample_form_v1/sex" type="xsd:string" />
+
+		<bind constraint=". &lt;= today()" id="birth_date" message="Cannot be after today"
+			nodeset="/sample_study_sample_form_v1/birth_date" type="xsd:date" />
+
+		<bind constraint=". &gt;= 0 and . &lt;= 200" id="weight_kg"
+			message="Should be between 0 and 200 (inclusive)" nodeset="/sample_study_sample_form_v1/weight_kg"
+			type="xsd:int" />
+
+		<bind constraint=". &gt; 1 and . &lt; 9" id="height_ft"
+			message="Should be between 1 and 9" nodeset="/sample_study_sample_form_v1/height_ft"
+			type="xsd:decimal" />
+
+		<bind action="enable" id="is_patient_pregnant"
+			nodeset="/sample_study_sample_form_v1/is_patient_pregnant" readonly="true()"
+			relevant="/sample_study_sample_form_v1/sex = 'female'" required="false()"
+			type="xsd:boolean" />
+
+		<bind id="arvs" nodeset="/sample_study_sample_form_v1/arvs" type="xsd:string" />
+
+		<bind format="image" id="picture" nodeset="/sample_study_sample_form_v1/picture"
+			type="xsd:base64Binary" />
+
+		<bind format="audio" id="sound" nodeset="/sample_study_sample_form_v1/sound"
+			type="xsd:base64Binary" />
+
+		<bind format="video" id="record_video"
+			nodeset="/sample_study_sample_form_v1/record_video" type="xsd:base64Binary" />
+
+		<bind format="gps" id="location" nodeset="/sample_study_sample_form_v1/location"
+			type="xsd:string" />
+
+		<bind id="continent" nodeset="/sample_study_sample_form_v1/continent"
+			type="xsd:string" />
+
+		<bind id="country" nodeset="/sample_study_sample_form_v1/country"
+			type="xsd:string" />
+
+		<bind id="district" nodeset="/sample_study_sample_form_v1/district"
+			type="xsd:string" />
+
+		<bind id="number_of_children" nodeset="/sample_study_sample_form_v1/number_of_children"
+			type="xsd:int" />
+
+		<bind constraint="length(.) = sample_study_sample_form_v1/number_of_children"
+			id="details_of_children" message="Number of entries should be equal to the number of kids"
+			nodeset="/sample_study_sample_form_v1/details_of_children" />
+
+		<bind id="name" nodeset="/sample_study_sample_form_v1/details_of_children/name"
+			type="xsd:string" />
+
+		<bind id="age" nodeset="/sample_study_sample_form_v1/details_of_children/age"
+			type="xsd:decimal" />
+
+		<bind id="child_sex"
+			nodeset="/sample_study_sample_form_v1/details_of_children/child_sex"
+			type="xsd:string" />
+
+		<bind id="start_time" nodeset="/sample_study_sample_form_v1/start_time"
+			type="xsd:time" />
+
+		<bind id="endtime" nodeset="/sample_study_sample_form_v1/endtime"
+			type="xsd:time" />
+
+	</model>
+
+	<group id="1">
+
+		<label>MYPage1</label>
+
+		<input bind="patient_id">
+
+			<label>Patient ID</label>
+
+		</input>
+
+		<select1 bind="title">
+
+			<label>Title</label>
+
+			<item id="mr">
+
+				<label>Mr</label>
+
+				<value>mr</value>
+
+			</item>
+
+			<item id="mrs">
+
+				<label>Mrs</label>
+
+				<value>mrs</value>
+
+			</item>
+
+			<item id="miss">
+
+				<label>Miss</label>
+
+				<value>miss</value>
+
+			</item>
+
+		</select1>
+
+		<input bind="first_name">
+
+			<label>First Name</label>
+
+		</input>
+
+		<input bind="last_name">
+
+			<label>Last Name</label>
+
+		</input>
+
+		<select1 bind="sex">
+
+			<label>Sex</label>
+
+			<item id="male">
+
+				<label>Male</label>
+
+				<value>male</value>
+
+			</item>
+
+			<item id="female">
+
+				<label>Female</label>
+
+				<value>female</value>
+
+			</item>
+
+		</select1>
+
+		<input bind="birth_date">
+
+			<label>Birth Date</label>
+
+		</input>
+
+		<input bind="weight_kg">
+
+			<label>Weight (Kg)</label>
+
+		</input>
+
+		<input bind="height_ft">
+
+			<label>Height (ft)</label>
+
+		</input>
+
+		<input bind="is_patient_pregnant">
+
+			<label>Is patient pregnant?</label>
+
+		</input>
+
+		<select bind="arvs">
+
+			<label>ARVs</label>
+
+			<hint>Please select all anti-retrovirals that the patient is taken.</hint>
+
+			<item id="azt">
+
+				<label>AZT</label>
+
+				<value>azt</value>
+
+			</item>
+
+			<item id="abicavir">
+
+				<label>ABICAVIR</label>
+
+				<value>abicavir</value>
+
+			</item>
+
+			<item id="efivarence">
+
+				<label>EFIVARENCE</label>
+
+				<value>efivarence</value>
+
+			</item>
+
+			<item id="triomune">
+
+				<label>TRIOMUNE</label>
+
+				<value>triomune</value>
+
+			</item>
+
+			<item id="truvada">
+
+				<label>TRUVADA</label>
+
+				<value>truvada</value>
+
+			</item>
+
+		</select>
+
+		<upload bind="picture" mediatype="image/*">
+
+			<label>Picture</label>
+
+		</upload>
+
+		<upload bind="sound" mediatype="audio/*">
+
+			<label>Sound</label>
+
+			<hint>Record a sound</hint>
+
+		</upload>
+
+		<upload bind="record_video" mediatype="video/*">
+
+			<label>Record Video</label>
+
+		</upload>
+
+		<input bind="location">
+
+			<label>Location</label>
+
+		</input>
+
+		<select1 bind="continent">
+
+			<label>Continent</label>
+
+			<item id="africa">
+
+				<label>Africa</label>
+
+				<value>africa</value>
+
+			</item>
+
+			<item id="asia">
+
+				<label>Asia</label>
+
+				<value>asia</value>
+
+			</item>
+
+			<item id="europe">
+
+				<label>Europe</label>
+
+				<value>europe</value>
+
+			</item>
+
+			<item id="americas">
+
+				<label>Americas</label>
+
+				<value>americas</value>
+
+			</item>
+
+		</select1>
+
+		<select1 bind="country">
+
+			<label>Country</label>
+
+			<itemset
+				nodeset="instance('country')/item[@parent=instance('sample_study_sample_form_v1')/continent]">
+
+				<label ref="label" />
+
+				<value ref="value" />
+
+			</itemset>
+
+		</select1>
+
+		<select1 bind="district">
+
+			<label>District</label>
+
+			<itemset
+				nodeset="instance('district')/item[@parent=instance('sample_study_sample_form_v1')/country]">
+
+				<label ref="label" />
+
+				<value ref="value" />
+
+			</itemset>
+
+		</select1>
+
+		<input bind="number_of_children">
+
+			<label>Number of children</label>
+
+		</input>
+
+		<group id="details_of_children">
+
+			<label>Details of children</label>
+
+			<repeat bind="details_of_children">
+
+				<input bind="name">
+
+					<label>Name</label>
+
+				</input>
+
+				<input bind="age">
+
+					<label>Age</label>
+
+				</input>
+
+				<select1 bind="child_sex">
+
+					<label>Sex</label>
+
+					<item id="male">
+
+						<label>Male</label>
+
+						<value>male</value>
+
+					</item>
+
+					<item id="female">
+
+						<label>Female</label>
+
+						<value>female</value>
+
+					</item>
+
+				</select1>
+
+			</repeat>
+
+		</group>
+
+		<input bind="start_time">
+
+			<label>Start Time</label>
+
+		</input>
+
+		<input bind="endtime">
+
+			<label>End Time</label>
+
+		</input>
+
+	</group>
+
+</xforms>
+

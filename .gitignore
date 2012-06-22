@@ -4,3 +4,22 @@
 *.jar
 *.war
 *.ear
+
+# Other stuff
+*.ap_
+*.apk
+*.dex
+
+# generated files
+bin/
+gen/
+target/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+#Eclipse config files
+.classpath
+.project
+.settings/
+*~
