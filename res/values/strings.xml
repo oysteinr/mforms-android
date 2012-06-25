@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello awsome-mforms-android!</string>
-    <string name="app_name">awsome-mforms-android</string>
+
+    <string name="app_name">openXdata mforms</string>
+    <string name="username" />
+    <string name="password" />
+    <string name="uName">Enter Username</string>
+    <string name="pwd">Enter Password</string>
+    <string name="login">Login</string>
+    <string name="cancel">Cancel</string>
+    <string name="studies">Studies</string>
+    <string name="tasks">Tasks</string>
+    <string name="sync">Sync</string>
+    <string name="prefs">Preferences</string>
+    <string name="synclayout">syncLayout</string>
+
 </resources>
